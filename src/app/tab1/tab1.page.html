@@ -1,17 +1,33 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>FREEZER-MANAGER</ion-card-title>
+    <ion-card-subtitle>add foot to freezer</ion-card-subtitle>
+  </ion-card-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card-content>
+    <form [formGroup] = "form">
+      <ion-grid>
+        <ion-row>
+          <ion-item>
+            <ion-label position="floating">Title</ion-label>
+            <ion-input type="text" formControlName="foodName"></ion-input>
+          </ion-item>
+        </ion-row>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-</ion-content>
+        <ion-row>
+          <ion-item>
+            <ion-label position="floating">Date added in freezer</ion-label>
+            <ion-datetime display-format="YYYY MMMM DD" min="2022"
+            formControlName="dataPlacedInFreezer">DatePlacedInFreezer</ion-datetime>
+          </ion-item>
+        </ion-row>
+
+      </ion-grid>
+      <ion-row>
+          <ion-col>
+            <ion-button (click)="add()">ADD</ion-button>
+          </ion-col>
+      </ion-row>
+    </form>
+  </ion-card-content>
+</ion-card>
