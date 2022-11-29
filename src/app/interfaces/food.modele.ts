@@ -1,5 +1,5 @@
 export interface Food{
-    id: string;
+    id?: string;
     foodName: string;
-    datePlacedFreezer: string;
+    dataPlacedInFreezer: string;
 }

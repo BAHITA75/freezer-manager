@@ -10,6 +10,9 @@ import { FoodService } from '../services/food.service';
 export class Tab1Page implements OnInit {
   form!: FormGroup;
 
+  //logo de chargement de page
+  isLoading = false;
+
   constructor(
     private foodService: FoodService // on instencie notre foodService
   ) {}
@@ -17,7 +20,7 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
     this.form = new FormGroup({
       foodName: new FormControl(null, {
-        // null à l'initoialisation (1er param)
+        // null à l'initialisation (1er param)
         validators: [Validators.required], // fournir un nom obligatoirement
       }),
 
@@ -27,8 +30,19 @@ export class Tab1Page implements OnInit {
     });
   }
   add() {
-    console.log(this.form);
-    this.foodService.addFood(this.form.value); //ajouter els elements
-    this.form.reset();
+    // console.log(this.form);
+    // this.foodService.addFood(this.form.value); //ajouter els elements
+
+    this.isLoading = true;
+
+    this.foodService.addFood(this.form.value)
+      .then(data => { // on attend une promise qui vient depuis notre service addFood et elle sera dans data
+        console.log('data', data);
+        this.isLoading = false;
+      })
+      .catch(err =>{ //on lance un catch en cas d'erreur
+        console.error(err)
+      })
+      this.form.reset();
+    }
   }
-}

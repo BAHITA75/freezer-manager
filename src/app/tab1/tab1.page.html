@@ -28,6 +28,10 @@
             <ion-button (click)="add()">ADD</ion-button>
           </ion-col>
       </ion-row>
+      <ion-item *ngIf="isLoading" class="background-spinner">
+        <ion-label></ion-label>
+        <ion-spinner name="crescent" class="spinner" mode="indeterminate"></ion-spinner>
+      </ion-item>
     </form>
   </ion-card-content>
 </ion-card>
